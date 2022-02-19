@@ -1,0 +1,38 @@
+package Employer;
+
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
+
+public class BaseClass {
+
+	
+	public static WebDriver driver;
+
+	@BeforeTest
+	public void OpenBrowser() {
+		String browser ="Firefox";
+		if(browser.equals("Chrome"))
+		{
+			System.setProperty("webdriver.chrome.driver", "C:\\drivers\\chromedriver.exe");
+			driver = new ChromeDriver();
+		}
+		else if(browser.equals("Firefox"))
+		{
+			System.setProperty("webdriver.gecko.driver", "C:\\drivers\\geckodriver.exe");
+			driver = new FirefoxDriver();
+		}
+		driver.manage().window().maximize();
+		driver.get("https://develop.diaf1ue54hor1.amplifyapp.com/check_eligibility"); 
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+	}
+	@AfterTest
+	public void CloseBrowser() {
+		driver.close();
+		driver.quit();
+	}
+}

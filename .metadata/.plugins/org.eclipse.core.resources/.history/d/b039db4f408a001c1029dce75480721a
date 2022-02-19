@@ -1,0 +1,82 @@
+package Employer;
+
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.testng.annotations.Test;
+
+public class onboarding extends BaseClass{
+	
+	@Test
+	public void testOnboarding() {
+		
+		driver.manage().timeouts().implicitlyWait(20,TimeUnit.SECONDS);
+		Boolean flag = true;
+		Boolean loginBtn = driver.findElement(By.xpath("//button[@class='btn btn-secondary']")).isDisplayed();
+		if(flag==loginBtn) {
+			System.out.println("Login Button is displayed");
+		}
+		else {
+			System.out.println("Login Button is not displayed");
+		}
+		Boolean contactSupport = driver.findElement(By.linkText("Contact Support")).isDisplayed();
+		if(flag==contactSupport) {
+			System.out.println("Contact Support Link is displayed");
+		}
+		else {
+			System.out.println("Contact Support Link is not displayed");
+		}
+		Boolean Logo = driver.findElement(By.className("logo-large")).isDisplayed();
+		if(flag==Logo) {
+			System.out.println("Logo is Present");
+		}
+		else {
+			System.out.println("Logo is not present");
+		}
+		String heading = driver.findElement(By.tagName("h1")).getText();
+		System.out.println(heading);
+		String description = driver.findElement(By.tagName("p")).getText();
+		System.out.println(description);
+		WebElement Corporation = driver.findElement(By.id("questions-0-choice-0"));
+		Corporation.click();
+		WebElement Next = driver.findElement(By.xpath("//button[@class='btn btn-primary btn-lg']"));
+		Next.click();
+		WebElement Qns1 = driver.findElement(By.id("questions-1-choice-0"));
+		Qns1.click();
+		Boolean BackBtn = driver.findElement(By.xpath("//button[@class='mr-4 btn btn-light btn-lg']")).isEnabled();
+		if(flag==BackBtn) {
+			driver.findElement(By.xpath("//button[@class='mr-4 btn btn-light btn-lg']")).click();
+		}
+		else {
+			System.out.println("Back Button is not enabled");
+		}
+		WebElement Next1 = driver.findElement(By.xpath("//button[@class='btn btn-primary btn-lg']"));
+		Next1.click();
+		Boolean YesisSelected = driver.findElement(By.id("questions-1-choice-0")).isSelected();
+		if(flag==YesisSelected) {
+			System.out.println("Radio Button is selected");
+		}
+		else {
+			System.out.println("Radio button not selected");
+		}
+		WebElement Qns2 = driver.findElement(By.id("questions-2-choice-0"));
+		Qns2.click();
+		
+	}
+	
+	public static void validate() {
+		Boolean flag = true;
+		Boolean YesisSelected = driver.findElement(By.id("questions-1-choice-0")).isSelected();
+		if(flag==YesisSelected) {
+			System.out.println("Radio Button is selected");
+		}
+		else {
+			System.out.println("Radio button not selected");
+		}
+	}
+	public static void Back() {
+		
+	}
+	
+}

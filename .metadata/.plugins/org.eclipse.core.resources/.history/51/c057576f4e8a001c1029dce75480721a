@@ -1,0 +1,35 @@
+package Employer;
+
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.testng.annotations.Test;
+
+public class OnboardingEntireFlow extends BaseClass {
+
+@Test
+public void testOnboardingEntireFlow() {
+	driver.manage().timeouts().implicitlyWait(20,TimeUnit.SECONDS);
+	WebElement Corporation = driver.findElement(By.id("questions-0-choice-0"));
+	Corporation.click();
+	NextBtn();
+	WebElement Qns1 = driver.findElement(By.id("questions-1-choice-0"));
+	Qns1.click();
+	NextBtn();
+	WebElement Qns2 = driver.findElement(By.id("questions-2-choice-1"));
+	Qns2.click();
+	NextBtn();
+	String SuccessMsg = driver.findElement(By.tagName("h2")).getText();
+	SuccessMsg
+	
+	
+	
+	
+}
+public static void NextBtn() {
+	WebElement Next = driver.findElement(By.xpath("//button[@class='btn btn-primary btn-lg']"));
+	Next.click();
+}
+	
+}
